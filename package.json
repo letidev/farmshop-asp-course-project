@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "devDependencies": {},
+  "dependencies": {
+    "autoprefixer": "^10.0.4",
+    "postcss": "^8.1.10",
+    "postcss-cli": "^8.3.0",
+    "tailwindcss": "^2.0.1",
+    "tailwindcss-cli": "^0.1.2"
+  },
+  "scripts": {
+    "buildcss": "postcss wwwroot/css/styles.css -o wwwroot/css/tailwind.css",
+    "buildcssprod": "postcss wwwroot/css/styles.css -o wwwroot/css/tailwind.css --env production"
+  }
+}

@@ -1,0 +1,20 @@
+dotnet new globaljson --sdk-version 3.1.402
+
+dotnet new mvc --no-https --framework netcoreapp3.1
+
+dotnet new sln
+
+dotnet sln add ./
+
+dotnet add package <package name>
+
+dotnet ef migrations add <migration name>
+dotnet ef database update
+
+# starts on localhost:5000
+dotnet run 
+
+# this is going to rebuild the project and restart the server every time 
+# a file changes
+dotnet watch run 
+
