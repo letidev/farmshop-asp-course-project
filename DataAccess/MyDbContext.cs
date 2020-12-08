@@ -5,14 +5,14 @@ using BC = BCrypt.Net.BCrypt;
 namespace FarmShop.DataAccess {
     public class MyDbContext : DbContext {
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Product> Items { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
 
         public MyDbContext() {
             Roles = this.Set<Role>();
-            Items = this.Set<Product>();
+            Products = this.Set<Product>();
             Users = this.Set<User>();
             Orders = this.Set<Order>();
             OrderProducts = this.Set<OrderProduct>();
@@ -39,7 +39,7 @@ namespace FarmShop.DataAccess {
                     Id = 1,
                     Username = "admin",
                     Password = BC.HashPassword("admin"),
-                    isDeleted = false,
+                    IsDeleted = false,
                     RoleId = 1
                 }
                 );

@@ -6,40 +6,21 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/tailwind.css" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">farmshop_asp_course_project</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+<body class="max-w-screen-xl mx-auto flex flex-col">
+    <div class="flex flex-row h-16 bg-green-100 px-2 items-center text-green-800">
+        <span class="text-xl font-bold mr-5">Farm Shop</span>
+        <a href="/Home/Index">
+            <span class="font-semibold hover:bg-green-50 p-2 text-lg">
+                Home
+            </span>
+        </a>
+
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - farmshop_asp_course_project - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    
+    <div>
+        @RenderBody()
+    </div>
+
     <script src="~/js/app.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>

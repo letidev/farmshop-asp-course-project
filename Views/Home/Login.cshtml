@@ -1,0 +1,32 @@
+﻿@model FarmShop.ViewModels.Home.LoginVM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/css/tailwind.css" />
+</head>
+<body class="max-w-screen-xl mx-auto flex flex-col">
+    <div class="flex flex-col max-w-md w-full mx-auto mt-32">
+        <div class="text-center text-3xl mt-10 font-semibold text-gray-800">Login to Farm Shop</div>
+        <form action="/Home/Login" method="post">
+            <div class="flex flex-col mt-5">
+                @Html.LabelFor(m => m.Username, new { Class = "cursor-pointer" })
+                @Html.TextBoxFor(m => m.Username, new { Class = "border p-1 rounded shadow-sm block w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500" })
+                @Html.ValidationMessageFor(m => m.Username)
+            </div>
+            <div class="flex flex-col mt-5">
+                @Html.LabelFor(m => m.Password, new { Class = "cursor-pointer" })
+                @Html.TextBoxFor(m => m.Password, new { Class = "border p-1 rounded shadow-sm block w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <a href="/Home/Register" class="w-full mt-6 block cursor-pointer text-right text-gray-500 hover:text-green-500 no-underline focus:underline">No profile? Signup here!</a>
+            <button type="submit" class="mt-2 w-full text-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                Login
+            </button>
+        </form>
+    </div>
+</body>
+</html>
