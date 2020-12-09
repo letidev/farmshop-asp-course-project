@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,7 +7,7 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/tailwind.css" />
 </head>
-<body class="max-w-screen-xl mx-auto flex flex-col">
+<body class="max-w-screen-xl mx-auto flex flex-col min-h-screen">
     <div class="flex flex-row h-16 bg-green-100 px-2 items-center text-green-800">
         <span class="text-xl font-bold mr-5">Farm Shop</span>
         <a href="/Home/Index">
@@ -14,11 +15,59 @@
                 Home
             </span>
         </a>
+        @if (this.Context.Session.GetString("LoggedUserRole") == "Admin") {
+            <a href="/Users/Index">
+                <span class="font-semibold hover:bg-green-50 p-2 text-lg">
+                    Users
+                </span>
+            </a>
+        }
+        @if (this.Context.Session.GetString("LoggedUserRole") == "Admin") {
+            <a href="/Products/Index">
+                <span class="font-semibold hover:bg-green-50 p-2 text-lg">
+                    Products
+                </span>
+            </a>
+        }
+        @if (this.Context.Session.GetString("LoggedUserRole") == "Admin") {
+            <a href="/Orders/Index">
+                <span class="font-semibold hover:bg-green-50 p-2 text-lg">
+                    All Orders
+                </span>
+            </a>
+        }
+        @if (this.Context.Session.GetString("LoggedUserRole") == "User") {
+            <a href="/Orders/My">
+                <span class="font-semibold hover:bg-green-50 p-2 text-lg">
+                    My Orders
+                </span>
+            </a>
+        }
+        @if (this.Context.Session.GetString("LoggedUserRole") == "User") {
+            <a href="/Orders/Create">
+                <span class="font-semibold hover:bg-green-50 p-2 text-lg">
+                    New Order
+                </span>
+            </a>
+        }
+        @if (this.Context.Session.GetString("LoggedUsername") != null) {
+            <a href="/Home/Logout">
+                <span class="font-semibold hover:bg-green-50 p-2 text-lg">
+                    Logout
+                </span>
+            </a>
+        }
 
     </div>
 
-    <div>
+    <div class="flex-grow">
         @RenderBody()
+    </div>
+
+    <div class="h-16 bg-green-50 flex flex-row items-center">
+        <p class="text-center text-green-500 w-full">
+            This is an ASP.NET Core project made as a course project for the discipline "Event Programming".
+        </p>
     </div>
 
     <script src="~/js/app.js" asp-append-version="true"></script>

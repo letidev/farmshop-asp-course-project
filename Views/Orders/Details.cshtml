@@ -1,0 +1,44 @@
+﻿@model FarmShop.ViewModels.Orders.DetailsVM
+@using System.Linq
+@using FarmShop.Entities
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Order Detail";
+}
+
+<div class="flex flex-col p-3 mx-auto">
+    <div class="flex flex-row">
+        <div class="w-52 font-semibold">Order #</div>
+        <div class="w-52 ml-2 font-semibold">Order Date</div>
+        <div class="w-52 ml-2 font-semibold">User</div>
+
+    </div>
+
+
+    <div class="flex flex-row pl-1 mt-2">
+        <div class="w-52">@Model.Order.Id</div>
+        <div class="w-52 ml-2">@Model.Order.OrderDate.ToString("dd.MM.yyyy HH:mm")</div>
+        <div class="w-52 ml-2">@Model.Order.ParentUser.Username</div>
+    </div>
+
+    <div class="flex flex-row mt-5">
+        <div class="w-52 font-semibold">Product name</div>
+        <div class="w-52 ml-2 font-semibold">Total Price</div>
+        <div class="w-52 ml-2 font-semibold">Quantity</div>
+        <div class="w-52 ml-2 font-semibold">Price sold</div>
+    </div>
+
+    @foreach (OrderProduct op in Model.OrderProducts) {
+        <div class="flex flex-row">
+            <div class="w-52 ">@op.Product.Name</div>
+            <div class="w-52 ml-2">@(op.PriceSold*op.Quantity)</div>
+            <div class="w-52 ml-2">@op.Quantity</div>
+            <div class="w-52 ml-2">@op.PriceSold</div>
+        </div>
+    }
+
+    <div class="flex flex-row">
+        <div class="w-52 font-semibold">Total Price</div>
+        <div class="w-52 ml-2 font-semibold">@Model.OrderProducts.Sum(op => op.PriceSold * op.Quantity)</div>
+    </div>
+</div>

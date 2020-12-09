@@ -1,0 +1,35 @@
+﻿@model FarmShop.ViewModels.Products.CreateVM
+@using FarmShop.Entities
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create Product";
+}
+
+<div>
+    <form action="/Products/Create" method="post" class="max-w-sm mx-auto">
+        <div class="h-4 mt-5">
+            <div class="text-center font-semibold text-red-500">
+                @Html.ValidationMessage("CreateProductFailed")
+            </div>
+        </div>
+        <div class="flex flex-col mt-5">
+            @Html.LabelFor(m => m.Name, new { Class = "cursor-pointer" })
+            @Html.TextBoxFor(m => m.Name, new { Class = "border p-1 rounded shadow-sm block w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500" })
+            <div class="h-6">
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+        </div>
+
+        <div class="flex flex-col mt-5">
+            @Html.LabelFor(m => m.Price, new { Class = "cursor-pointer" })
+            @Html.TextBoxFor(m => m.Price, new { Class = "border p-1 rounded shadow-sm block w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500" })
+            <div class="h-6">
+                @Html.ValidationMessageFor(m => m.Price)
+            </div>
+        </div>
+        <button type="submit" class="mt-2 w-full text-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+            Create
+        </button>
+
+    </form>
+</div>

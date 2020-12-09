@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using BC = BCrypt.Net.BCrypt;
 
 namespace FarmShop.Entities {
     public class User : BaseEntity {
@@ -17,5 +18,13 @@ namespace FarmShop.Entities {
         // data annotations
         [ForeignKey("RoleId")]
         public Role Role { get; set; }
+
+        // constructors
+        public User() { }
+        public User(string username, string password, int roleId) {
+            Username = username;
+            Password = BC.HashPassword(password);
+            RoleId = roleId;
+        }
     }
 }

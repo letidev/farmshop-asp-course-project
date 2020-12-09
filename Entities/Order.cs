@@ -12,5 +12,11 @@ namespace FarmShop.Entities {
         // data annotations
         [ForeignKey("UserId")]
         public User ParentUser { get; set; }
+
+        public Order() { }
+        public Order(DateTime orderDate, int userId) {
+            OrderDate = orderDate;
+            UserId = userId;
+        }
     }
 }

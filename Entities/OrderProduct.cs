@@ -8,7 +8,7 @@ namespace FarmShop.Entities {
         // price of the product and is kept as history
         // at some point the price of the original product
         // may change e.g. become more expensive or have a discount
-        public int PriceSold { get; set; }
+        public decimal PriceSold { get; set; }
 
         // foreign keys
         public int OrderId { get; set; }

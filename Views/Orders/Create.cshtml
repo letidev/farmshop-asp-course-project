@@ -1,0 +1,23 @@
+﻿@model FarmShop.ViewModels.Orders.CreateVM
+@using FarmShop.Entities
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create Order";
+}
+
+<div>
+    <form action="/Orders/Create" method="post" class="max-w-md mx-auto mt-10">
+        
+        @for(int i = 0; i < Model.Products.Count; i++) {
+            <div class="flex flex-row mb-3">
+                <span class="block w-56">@Model.Products[i].Name (@Model.Products[i].CurrentPrice)лв.</span>
+                @Html.TextBoxFor(m => m.Quantities[i], new { Type = "number", Class= "border p-1 rounded shadow-sm block sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500" })
+                @Html.HiddenFor(m => m.Ids[i])
+            </div>
+        }
+
+        <button type="submit" class="mt-2 w-full text-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+            Submit Order
+        </button>
+    </form>
+</div>
